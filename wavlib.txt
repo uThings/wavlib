@@ -1,0 +1,60 @@
+
+/*****************************************************************
+
+ Copyright 2003   PIER LUCA MONTESSORO
+
+ University of Udine
+ ITALY
+
+ montessoro@uniud.it
+ www.montessoro.it
+
+ This file is part of a freeware open source software package.
+ It can be freely used (as it is or modified) as long as this
+ copyright note is not removed.
+
+******************************************************************/
+
+
+This is a brief documentation of the Pier Luca Montessoro's wavlib
+functions that make easy reding, creating, modifying and writing
+audio files (WAV format, 44.1 KHz, 16 bits/sample).
+See also the example programs.
+
+
+DATA TYPES
+----------
+- short int    represent a sample (one channel)
+- WAVE         the wave file stored in memory
+
+
+MACRO
+-----
+- SAMPLE(wave, channel, offset)  returns a short int representing the 
+                                 sample in position offset
+
+
+FUNCTIONS
+---------
+- WAVE  ReadWave (FILE *fp);
+  reads a wave file and returns the data structure representing it in memory
+
+- void  WriteWave (WAVE wave, FILE *fp);
+  writes a wave file
+
+- WAVE  CreateEmptyCDaudioWave (unsigned long int numofstereosamples);
+  creates an empty wave structure in memory
+
+- void  ReleaseWaveData (WAVE *wave);
+  releases the memory allocated by CreateEmptyCDaudioWave
+
+
+HOW TO COMPILE
+--------------
+- gcc -o <name>.exe -DBMPSHOWALL <name>.c wav.c
+  (both source file and library files - wav.c and wav.h - must be 
+  in current directory)
+
+- using the script file cc_wav.bat (DOS/Windows): cc_wav <name>
+
+- using the script file cc_wav.sh (Unix): ./cc_wav.sh <name>
